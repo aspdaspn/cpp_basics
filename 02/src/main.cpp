@@ -3,14 +3,8 @@
 
 using namespace std;
 
-Square board[SIZE][SIZE];
-
-void init_board() {
-	for(int r = 0; r < SIZE; r++)
-		for(int c = 0; c < SIZE; c++)
-			board[r][c].content = E;
-	return;
-}
+Square board[SIZE][SIZE] = {E};
+// Init board with empty Values
 
 void print_board() {
 	for(int r = 0; r < SIZE; r++) {
@@ -50,7 +44,6 @@ void evaluate_union() {
 
 
 int main(int argc, char** args) {
-	init_board();
 	print_board();
 	evaluate_union();
 	return SUCCESS;
