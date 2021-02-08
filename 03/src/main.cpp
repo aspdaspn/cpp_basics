@@ -16,12 +16,15 @@ void pointer_to_array() {
 				ar[l][y][x] = ++c;
 	printf("New address of an element: %p\n", p_ar);
 	printf("New content of an element: %i\n", *p_ar);
+	// added array output with dereferencing 
+	cout << "With dereferencing, element is: " << *(*(*(ar + 1) + 1) + 1) << endl;
+	cout << "With dereferencing, address is: " << &*(*(*(ar + 1) + 1) + 1) << endl;
 	return;
 }
 
 int main(int argc, char** args) {
 	// 1
-	r = (float) (a * (b + (c / d)));
+	r = a * (b + ((float) c / d));
 	printf("%i * (%i + (%i / %i)) = %.2f\n", a, b, c, d, r);
 	
 	// 2
