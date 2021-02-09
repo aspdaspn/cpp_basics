@@ -8,11 +8,13 @@ bool is_summ_valid(int* p_a, int* p_b) {
 	// Return true if a + b is in range from 10 to 20 inclusive
 	int sum;
 	sum = *p_a + *p_b;
-	return (sum >= 10 & sum <= 20);
+	return (sum >= 10 && sum <= 20);
 }
 
 bool is_number_prime(int* p_a) {
-	if (*p_a % 2 == 0)
+	if (*p_a == 2 || *p_a == 3 || *p_a == 5 || *p_a == 7 || *p_a == 11)
+		return true;
+	if (*p_a % 2 == 0 || *p_a % 3 == 0 || *p_a % 5 == 0 || *p_a % 7 == 0 || *p_a % 11 == 0)
 		return false;
 	for (int i = 2; i < *p_a; i++)
 		if (*p_a % i == 0)
@@ -48,10 +50,10 @@ int main(int argc, char** args) {
 		: cout << "The number is not a prime";
 	cout << endl <<endl;
 
-	// 3. Print "True" if both constants or their sum are equal to 10
+	// 3. Print "True" if one of the constants or their sum are equal to 10
 	cout << "Defined constants are: " << val1 << " " << val2 << endl;
-	((val1 == 10 && val2 == 10) || val1 + val2 == 10) 
-		? cout << "Either both constants or the sum is equal to 10" 
+	(val1 == 10 || val2 == 10 || val1 + val2 == 10) 
+		? cout << "Either one of the constants or the sum is equal to 10" 
 		: cout << "Neither constants nor their sum are equal to 10";
 	cout << endl;
 
