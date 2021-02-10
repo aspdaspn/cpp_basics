@@ -1,5 +1,6 @@
 // External libraries file
 #include "main.h"
+#include <stdarg.h>
 
 namespace MyLib {
 	void printArray(int *array, int *size) {
@@ -65,5 +66,15 @@ namespace MyLib {
 			++(*offset);
 			shiftArray(array, size, offset);
 		}
+	}
+
+	void reverseArguments(int count, ...) {
+		va_list ap;
+		int i;
+		va_start(ap, count);
+		for (i = 0; i < count; i++) 
+			std::cout << (va_arg(ap, int) ^ 1) << " ";
+		std::cout << std::endl;
+		va_end(ap);
 	}
 }

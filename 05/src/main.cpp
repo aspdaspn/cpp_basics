@@ -3,7 +3,7 @@
 using namespace MyLib;
 
 int main(int argc, char **args) {
-	// Task 5
+	// Task 1
 	int arsize = 10;
 	int array[arsize] = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
 	std::cout << "Task 5, reverce the array" << std::endl;
@@ -32,5 +32,8 @@ int main(int argc, char **args) {
 	printArray(cyclearray, &arsize);
 	shiftArray(cyclearray, &arsize, &offset);
 	printArray(cyclearray, &arsize);
+
+	// Task 5
+	reverseArguments(5, 1, 1, 0, 0, 1); 
 	return SUCCESS;
 }
