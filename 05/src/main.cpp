@@ -8,6 +8,8 @@ int main(int argc, char **args) {
 	int array[arsize] = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
 	std::cout << "Task 5, reverce the array" << std::endl;
 	reverseArray(array, &arsize);
+	int arraynew[arsize] = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
+	reverseArrayNew(arraynew, &arsize);
 	
 	// Task 2
 	arsize = 8;
@@ -23,7 +25,9 @@ int main(int argc, char **args) {
 	std::cout << "Task 3, check if array is balanced" << std::endl;
 	printArray(balancearray, &arsize);
 	(*p_cB)(balancearray, &arsize) ? std::cout << "The array is balanced" << std::endl : std::cout << "The arryy is not balanced" << std::endl;
-
+	int balancearraynew[arsize] = {1, 2, 4, 0, 5, 0, 0, 1, 0, 1};
+	printArray(balancearraynew, &arsize);
+	checkBalanceNew(balancearraynew, &arsize) ? std::cout << "The array is balanced" << std::endl : std::cout << "The array is not balanced" << std::endl;
 	// Task 4
 	arsize = 10;
 	int offset = -3;
@@ -32,6 +36,10 @@ int main(int argc, char **args) {
 	printArray(cyclearray, &arsize);
 	shiftArray(cyclearray, &arsize, &offset);
 	printArray(cyclearray, &arsize);
+	offset = -3;
+	int cyclearraynew[arsize] = {3, 2, 1, 4, 7, 6, 5, 9, 0, 8};
+	shiftArrayNew(cyclearraynew, &arsize, &offset);
+	printArray(cyclearraynew, &arsize);
 
 	// Task 5
 	reverseArguments(5, 1, 1, 0, 0, 1); 

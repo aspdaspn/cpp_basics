@@ -21,6 +21,15 @@ namespace MyLib {
 		printArray(array, size);
 	}
 
+	void reverseArrayNew(int *array, int* size) {
+		std::cout << "Initial array: " << std::endl;
+		printArray(array, size);
+		for (int i = 0; i < *size; i++)
+			*(array + i) = 1 - *(array + i);
+		std::cout << "Reversed array: " << std::endl;
+		printArray(array, size);
+	}
+
 	void changeArray(int *array, int *size) {
 		for(int i = 0; i < *size; i++)
 			*(array + i) = i * 3 + 1;
@@ -38,6 +47,21 @@ namespace MyLib {
 				rsum += *(array + j);
 			i++;
 		} while (lsum != rsum && i < *size);
+		return (lsum == rsum);
+	}
+
+	bool checkBalanceNew(int *array, int *size) {
+		int l = 0;
+		int r = *size - 1;
+		int lsum = *(array + l);
+		int rsum = *(array + r);
+		while (r - l != 1) {
+			if ( lsum < rsum) {
+				lsum += *(array + ++l);
+			} else {
+				rsum += *(array + --r);
+			}
+		}
 		return (lsum == rsum);
 	}
 
@@ -66,6 +90,22 @@ namespace MyLib {
 			++(*offset);
 			shiftArray(array, size, offset);
 		}
+	}
+
+	void shiftArrayNew(int *array, int *size, int *offset) {
+		if (*offset == 0)
+			return;
+		if (*offset < 0)
+			*offset = *offset + *size; 
+		int i = *size;
+		int tmp = *(array + --i);
+		while (i) {
+			*(array + i) = *(array + (i - 1));
+			i--;
+		}
+		*array = tmp;
+		--(*offset);
+		shiftArrayNew(array, size, offset);
 	}
 
 	void reverseArguments(int count, ...) {
