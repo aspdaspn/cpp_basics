@@ -40,6 +40,10 @@ int main(int argc, char **args) {
 	int cyclearraynew[arsize] = {3, 2, 1, 4, 7, 6, 5, 9, 0, 8};
 	shiftArrayNew(cyclearraynew, &arsize, &offset);
 	printArray(cyclearraynew, &arsize);
+	offset = 23;
+	int cyclearraynr[arsize] = {3, 2, 1, 4, 7, 6, 5, 9, 0, 8};
+	shiftArrayNoRec(cyclearraynr, &arsize, &offset);
+	printArray(cyclearraynr, &arsize);
 
 	// Task 5
 	reverseArguments(5, 1, 1, 0, 0, 1); 

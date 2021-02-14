@@ -96,7 +96,7 @@ namespace MyLib {
 		if (*offset == 0)
 			return;
 		if (*offset < 0)
-			*offset = *offset + *size; 
+			*offset += *size; 
 		int i = *size;
 		int tmp = *(array + --i);
 		while (i) {
@@ -106,6 +106,18 @@ namespace MyLib {
 		*array = tmp;
 		--(*offset);
 		shiftArrayNew(array, size, offset);
+	}
+
+	void shiftArrayNoRec(int *array, int *size, int *offset) {
+		*offset %= *size;
+		*offset += *size;
+		for (int i = 0; i < *offset; i++) {
+			int tmp = *(array + (*size - 1));
+			for (int j = *size - 1; j > 0; j--)
+				*(array + j) = *(array + (j - 1));
+			*(array) = tmp;
+		}
+
 	}
 
 	void reverseArguments(int count, ...) {
