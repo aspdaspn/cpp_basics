@@ -1,7 +1,7 @@
 #include <main.h>
 
 // Task 1
-#define INRANGE(a, b) (((a) >= 0) && (a) < (b) ? 1 : 0)
+#define INRANGE(a, b) (((a) >= 0) && ((a) < (b)))
 
 // Task 2
 #define ARRAYACCESS(a, x, y) (**(a + x) + (y))
