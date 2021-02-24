@@ -148,6 +148,19 @@ void aiTurn(Field &field) {
 	setVal(field.map, y, x, AI);
 }
 
+bool gameCheck(Field &field, PLAYER c, const std::string &winString) {
+	print(field);
+	if (checkWin(field, c)) {
+		std::cout << winString << "\n";
+		return true;
+	}
+	if (isDraw(field)) {
+		std::cout << "Draw!\n";
+		return true;
+	}
+	return false;
+}
+
 int main(int argc, char** args) {
 	srand(time(NULL));
 	Field field;
@@ -155,25 +168,11 @@ int main(int argc, char** args) {
 	print(field);
 	while (true) {
 		humanTurn(field);
-		print(field);
-		if (checkWin(field, HUMAN)) {
-			std::cout << "Human wins!\n";
+		if (gameCheck(field, HUMAN, "Human wins!"))
 			break;
-		}
-		if (isDraw(field)) {
-			std::cout << "Draw!\n";
-			break;
-		}
 		aiTurn(field);
-		print(field);
-		if (checkWin(field, AI)) {
-			std::cout << "Computer wins!\n";
+		if (gameCheck(field, AI, "Computer wins!"))
 			break;
-		}
-		if (isDraw(field)) {
-			std::cout << "Draw!\n";
-			break;
-		}
 	}
 	return SUCCESS;
 }
