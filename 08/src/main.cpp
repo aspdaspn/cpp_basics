@@ -143,9 +143,27 @@ bool humanWinCheck(Field &field) {
 	return false;
 }
 
+bool desireToWin(Field &field) {
+	int nx;
+	int ny;
+	for (int y = 0; y < field.szY; y++)
+		for (int x = 0; x < field.szX; x++)
+			if (getVal(field.map, y, x) == AI)
+				while (true) {
+					nx = rand() % (field.toWin * 2) - field.toWin;
+					ny = rand() % (field.toWin * 2) - field.toWin;
+					if (isValid(field, x + nx, y + ny) && isEmpty(field, x + nx, y + ny)) {
+						setVal(field.map, x + nx, y + ny, AI);
+						return true;
+					}
+				}
+	return false;
+}
+
 void aiTurn(Field &field) {
 	if (aiWinCheck(field)) return;
 	if (humanWinCheck(field)) return;
+	if (desireToWin(field)) return;
 	int x;
 	int y;
 	do {
