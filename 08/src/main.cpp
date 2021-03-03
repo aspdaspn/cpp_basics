@@ -38,6 +38,7 @@ void init(Field &field) {
 		for (int x = 0; x < field.szX; x++)
 			setVal(field.map, y, x, EMPTY);
 	}
+	std::cin.ignore();
 }
 
 void print(Field &field) {
@@ -64,12 +65,18 @@ bool isValid(Field &field, int x, int y) {
 void humanTurn(Field &field) {
 	int x;
 	int y;
+	std::string input;
 	bool isError = false;
+	std::regex r("(\\d).*(\\d)");
 	do {
 		if (isError)
 			std::cout << "Incorrect input!\n";
 		std::cout << "Enter coordinates X and Y, divided by space: \n";
-		scanf("%d %d", &x, &y);
+		std::getline(std::cin, input);
+		std::smatch sm;
+		std::regex_match(input, sm, r);
+		x = std::atoi(sm[1].str().c_str());
+		y = std::atoi(sm[2].str().c_str());
 		x--; y--;
 		isError = true;
 	} while(!isValid(field, x, y) || !isEmpty(field, x, y));
