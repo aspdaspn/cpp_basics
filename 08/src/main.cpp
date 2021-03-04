@@ -144,16 +144,20 @@ bool humanWinCheck(Field &field) {
 }
 
 bool desireToWin(Field &field) {
-	int nx;
-	int ny;
+	int nx, vx;
+	int ny, vy;
+	int len;
 	for (int y = 0; y < field.szY; y++)
 		for (int x = 0; x < field.szX; x++)
 			if (getVal(field.map, y, x) == AI)
 				while (true) {
-					nx = rand() % (field.toWin * 2) - field.toWin;
-					ny = rand() % (field.toWin * 2) - field.toWin;
-					if (isValid(field, x + nx, y + ny) && isEmpty(field, x + nx, y + ny)) {
-						setVal(field.map, x + nx, y + ny, AI);
+					len = rand() % (field.toWin);
+					vx = -1 + rand() % 3;
+					vy = -1 + rand() % 3;
+					nx = x + vx * len;
+					ny = y + vy * len;
+					if (isValid(field, nx, ny) && isEmpty(field, nx, ny)) {
+						setVal(field.map, ny, nx, AI);
 						return true;
 					}
 				}
