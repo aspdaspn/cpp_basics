@@ -1,0 +1,5 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+PROJECT(tic_tac_toe)
+add_executable(ttt.bin src/main.cpp) 
+# set(CMAKE_BUILD_TYPE Debug)
+target_include_directories(ttt.bin PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
